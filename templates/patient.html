@@ -1,0 +1,406 @@
+<!doctype html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1/dist/chart.min.js"></script>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>DashBoard</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/patient_dash.css'%}">
+    <script src="https://kit.fontawesome.com/ac298c0bbf.js" crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+
+</head>
+
+<body>
+
+    <div class="header">
+        <div class="sub_nav">
+
+
+            <div class="hamburger">
+
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+
+            </div>
+            <div class="search">
+                <input type="text" name="search_for_doctors" id="search" placeholder="Search for doctors">
+                <i class="fa-solid fa-magnifying-glass" style="color: white; font-size :14px;"></i>
+            </div>
+
+            <div class="icons">
+
+                <i class="fa fa-envelope-open"></i>
+                <i class="fa fa-bell"></i>
+                <i class="fa fa-cog"></i>
+
+            </div>
+
+
+        </div>
+
+        <div class="heading">
+            <h1> Welcome Back, {{ user.username }}! </h1>
+            <h4> You have your next appointment with Physician on July 19 </h4>
+        </div>
+    </div>
+    <div class="first_section">
+        <div class="first_row">
+            <div class="col col-1"><br>
+                <center>
+                    <h2> Your latest BP data</h2>
+                </center>
+                <canvas class="chart" id="myChart" style="width:200px;"></canvas>
+
+            </div>
+
+            <div class="col col-2">
+
+                <div class="snippet snippet-1">
+                        {% for item in vitals_list %}
+                    <i class="fa-solid fa-heart-circle-plus" style="color: rgb(255, 0, 21); font-size: 5rem"></i>
+                    <div class="right">
+                        <h2>Your latest BP Level</h2>
+                        <h4>{{item.blood_pressure}} mm/Hg</h4>
+                        {% endfor %}
+                </div>
+                </div>
+                <div class="snippet snippet-2">
+
+
+                        {% for item in vitals_list %}
+                    <i class="fa-solid fa-heart-pulse" style="color:  red ; font-size: 5rem;"></i>
+                    <div class="right">
+                        <h2>Heart Beat Rate</h2>
+                        <h4>{{item.heartbeat}}</h4>
+                    </div>
+                    {% endfor%}
+                </div>
+                <div class="snippet snippet-3">
+
+                        {% for item in vitals_list %}
+                    <i class="fa-solid fa-person-running" style="color:  rgb(239, 243, 14) ; font-size: 5rem;"></i>
+                    <div class="right">
+                        <h2>Weight in Kg</h2>
+                        <div class="counter">
+                        <h2>        {{item.weight}}
+                        </h2>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                <div class="snippet snippet-4">
+
+
+                    <i class="fa-solid fa-person-running" style="color:  rgb(35, 207, 29) ; font-size: 5rem;"></i>
+                    <div class="right">
+                        <h2>Chloesterol</h2>
+                        <h4>
+                            170 mg/dL </h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <nav class="nav">
+        <div class="BRAND">
+            E-Health Manager
+        </div>
+        <div class="image">
+            <img src="{% static 'img/harke.svg' %}">
+            <p class="name"> {{user.username}} </p>
+            <p class="desc"> Age: 68, S: M </p>
+        </div>
+
+        <div class="nav-elements">
+            <center>
+                <ul class="nav-links">
+                    <li> <a href=" /">HOME</a>
+                      <li>  <a href= {% url 'create_record'%}>Add Record</a>
+                            <li> <a href=" ">Take an appointment</a>
+
+                                <li> <a href="{% url 'logout' %}">Log Out</a>
+                </ul>
+            </center>
+        </div>
+    </nav>
+
+
+    <div class="second_section">
+        <div class="second_row">
+
+            <div class="col col-1">
+                <center>
+                    <h2> Your Blood Sugar Level</h2>
+                </center>
+                <canvas id="BSChart" style="width:auto;"></canvas>
+
+
+
+            </div>
+
+            <div class="col col-2">
+
+                <H2> Last 5 months Cholesterol Level </h2>
+                <canvas id="C_Chart" style="width:auto;"></canvas>
+
+
+
+            </div>
+        </div>
+    </div>
+
+    <center>
+        <div class="third_section">
+
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d139267.27417793058!2d87.21413532502552!3d26.457293314101367!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39ef744704331cc5%3A0x6d9a85e45c54b3fc!2sBiratnagar%2056613!5e0!3m2!1sen!2snp!4v1624872111492!5m2!1sen!2snp"
+                width="1200" height="500" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+
+        </div>
+    </center>
+    <div class="fourth_section">
+        <div class="fourth_row">
+
+            <div class="col col-1">
+                <br>
+                <center>
+                    <h2> Report </h2>
+                </center>
+                <br>
+                <div class="table">
+                    <table class="ds-table">
+                        <thead>
+                            <tr>
+                                <th>S.N.</th>
+                                <th>Date.</th>
+                                <th class="vanish">Report</th>
+                                <th class="vanish vanish_1 ">Lab_name-Authoriser</th>
+                                <th class="vanish vanish_1 ">Download</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr>
+                                <td>1.</td>
+                                <td>05/01/2020</td>
+                                <td class="vanish">Blood Sugar</td>
+                                <td class="vanish vanish_1 ">QWE LABS - XYZ</td>
+                                <td class="vanish vanish_1 "><a href="">Download</a></td>
+                            </tr>
+                            <tr>
+                                <td>2.</td>
+                                <td>0/061/2020</td>
+                                <td class="vanish">Blood Sugar</td>
+                                <td class="vanish vanish_1 ">QWE LABS - XYZ</td>
+                                <td class="vanish vanish_1 "><a href="">Download</a></td>
+                            </tr>
+                            <tr>
+                                <td>3.</td>
+                                <td>07/01/2020</td>
+                                <td class="vanish">Blood Sugar</td>
+                                <td class="vanish vanish_1 ">QWE LABS - XYZ</td>
+                                <td class="vanish vanish_1 "><a href="">Download</a></td>
+                            </tr>
+                            <tr>
+                                <td>4.</td>
+                                <td>08/01/2020</td>
+                                <td class="vanish">Blood Sugar</td>
+                                <td class="vanish vanish_1 ">QWE LABS - XYZ</td>
+                                <td class="vanish vanish_1 "><a href="">Download</a></td>
+                            </tr>
+                            <tr>
+                                <td>5.</td>
+                                <td>09/01/2020</td>
+                                <td class="vanish">Blood Sugar</td>
+                                <td class="vanish vanish_1 ">QWE LABS - XYZ</td>
+                                <td class="vanish vanish_1 "><a href="">Download</a></td>
+                            </tr>
+                            <tr>
+                                <td>6.</td>
+                                <td>10/01/2020</td>
+                                <td class="vanish">Blood Sugar</td>
+                                <td class="vanish vanish_1 ">QWE LABS - XYZ</td>
+                                <td class="vanish vanish_1 "><a href="">Download</a></td>
+                            </tr>
+                            <tr>
+                                <td>7.</td>
+                                <td>11/01/2020</td>
+                                <td class="vanish">Blood Sugar</td>
+                                <td class="vanish vanish_1 ">QWE LABS - XYZ</td>
+                                <td class="vanish vanish_1 "><a href="">Download</a></td>
+                            </tr>
+                            <tr>
+                                <td>8.</td>
+                                <td>05/01/2020</td>
+                                <td class="vanish">Chloesterol</td>
+                                <td class="vanish vanish_1 ">QWE LABS - XYZ</td>
+                                <td class="vanish vanish_1 "><a href="">Download</a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+    <div class="BMI_CALCULATOR">
+        <div class="Bmi_title">
+            <h1>Your BMI CALCULATOR</h1>
+        </div>
+        <div class="compartments">
+            <form>
+                <label for="height_in_feet">Height in Feet</label>
+                <input type="number" name="Heigh_in_Feet" id="Height_in_feet"><br>
+                <label for="Height_in_inches">Height in inches</label>
+                <input type="number" name="Height_in_inches" id="Height_in_inches"><br>
+                <label for="height_in_feet">Weight in Pounds</label>
+                <input type="number" name="weight_in_pounds" id="weight_in_pounds"><br>
+                <input type="submit" value="Calculate BMI"><br>
+                <span class='outpt'></span>
+            </form>
+            <div class="about_BMI">
+                <div class="text">
+                    <h1>What is BMI?</h1><br>
+                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Atque adipisci eaque alias vitae, neque, expedita illo, distinctio libero eos consequatur nisi maxime debitis vel earum odio aliquid exercitationem! Laboriosam, vel. Lorem ipsum
+                        dolor sit amet consectetur adipisicing elit. Inventore pariatur temporibus nobis dolor aut veritatis excepturi magnam qui optio incidunt, reiciendis, libero eos velit rerum! Minus, corporis. Tenetur, sint corporis?</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+    <footer>
+        <center>
+            <p>&copy; E-Health Manager. All rights reserved. Designed By Code digger. </p>
+        </center>
+    </footer>
+
+
+<!--[if lt IE 7]>
+                <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+            <![endif]
+-->
+    
+    <script src="{% static 'js/dashboard.js' %}" async defer></script>
+    <script>
+        var xyValues = [200, 150, 150, 110, 140, 110, 120],
+            c = [170, 200, 250, 291, 320, 390, 410];
+        var myChart = new Chart("myChart", {
+            type: "line",
+            data: {
+                labels: ["5/1/2020", "6/1/2020", "7/1/2020", "8/1/2020", "9/1/2020", "10/6/2020", "11/7/2020"],
+                datasets: [{
+                    fill: false,
+                    lineTension: 0,
+                    backgroundColor: "rgba(0,0,255,1.0)",
+                    borderColor: "rgba(0,0,255,0.1)",
+                    data: xyValues,
+                }]
+            },
+            options: {
+                legend: {
+                    display: false
+                },
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            min: 6,
+                            max: 16
+                        }
+                    }],
+                }
+            }
+        });
+
+        var BSChart = new Chart("BSChart", {
+            type: "line",
+            data: {
+                labels: ["5/1/2020", "6/1/2020", "7/1/2020", "8/1/2020", "9/1/2020", "10/1/2020", "11/1/2020"],
+                datasets: [{
+                    fill: false,
+                    lineTension: 0,
+                    backgroundColor: "rgba(0,0,255,1.0)",
+                    borderColor: "rgba(0,0,255,0.1)",
+                    data: xyValues,
+                }]
+            },
+            options: {
+                legend: {
+                    display: false
+                },
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            min: 6,
+                            max: 16
+                        }
+                    }],
+                }
+            }
+        });
+
+        var C_Chart = new Chart("C_Chart", {
+            type: "line",
+            data: {
+                labels: ["5/1/2020", "6/1/2020", "7/1/2020", "8/1/2020", "9/1/2020", "10/1/2020", "11/1/2020"],
+                datasets: [{
+                    fill: false,
+                    lineTension: 0,
+                    backgroundColor: "rgba(0,0,255,1.0)",
+                    borderColor: "rgba(0,0,255,0.1)",
+                    data: c,
+                }]
+            },
+            options: {
+                legend: {
+                    display: false
+                },
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            min: 6,
+                            max: 16
+                        }
+                    }],
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>
+
+</body>
+
+</html>
+
+<!--
+
+
+{% block content %}
+<h2> Hello, patient </h2>
+<ul>
+{% for item in vitals_list %}
+        <li>{{item.date}}, 
+                <ul>
+                        <li>Blood Pressure: {{item.blood_pressure}} mm/Hg</li>
+                        <li>Temperature {{item.temperature}}C</li>
+                </ul>
+        </li>   
+{% endfor %}
+</ul>
+<a href= {% url 'create_record'%}>Add Record</a>
+{% endblock %}
+-->

@@ -1,0 +1,319 @@
+<!doctype html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1/dist/chart.min.js"></script>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>DashBoard</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {%load static%}
+    <link rel="stylesheet" href="{% static 'css/doc_dash.css' %}">
+    <script src="https://kit.fontawesome.com/ac298c0bbf.js" crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+
+</head>
+
+<body>
+
+    <div class="header">
+        <div class="sub_nav">
+
+
+            <div class="hamburger">
+
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+
+            </div>
+            <div class="search">
+                <input type="text" name="search_for_doctors" id="search" placeholder="Search for patients">
+                <i class="fa-solid fa-magnifying-glass" style="color: white; font-size :14px;"></i>
+            </div>
+
+            <div class="icons">
+
+                <i class="fa fa-envelope-open"></i>
+                <i class="fa fa-bell"></i>
+                <i class="fa fa-cog"></i>
+
+            </div>
+
+
+        </div>
+
+        <div class="heading">
+            <h1> Welcome Back, Dr. {{user.username}}! </h1>
+            <h4> You have your next appointment with Physician on July 19 </h4>
+        </div>
+    </div>
+    <div class="first_section">
+        <div class="first_row">
+            <div class="col col-1"><br>
+                <center>
+                    <h2> No. of patients in last 5 days</h2>
+                </center>
+                <canvas class="chart" id="myChart" style="width:200px;"></canvas>
+
+            </div>
+
+            <div class="col col-2">
+
+                <div class="snippet snippet-1">
+
+                    <i class="fa-solid fa-heart-circle-plus" style="color: rgb(255, 0, 21); font-size: 5rem"></i>
+                    <div class="right">
+                        <h2>Todays patient</h2><br>
+                        <h4>5</h4>
+                    </div>
+                </div>
+                <div class="snippet snippet-2">
+
+
+                    <i class="fa-solid fa-bed" style="color:  red ; font-size: 5rem;"></i>
+                    <div class="right">
+                        <h2>Total patients till today</h2><br>
+                        <h4>135</h4>
+                    </div>
+                </div>
+                <div class="snippet snippet-3">
+
+
+                    <i class="fa-solid fa-person-running" style="color:  rgb(239, 243, 14) ; font-size: 5rem;"></i>
+                    <div class="right">
+                        <h2>Followup patients</h2><br>
+                        <h4>5</h4>
+                    </div>
+                </div>
+                <div class="snippet snippet-4">
+
+
+                    <i class="fa-solid fa-calendar-check" style="color:  rgb(35, 207, 29) ; font-size: 5rem;"></i>
+                    <div class="right">
+                        <h2>Today's appointment</h2><br>
+                        <h4>
+                            10 </h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <nav class="nav">
+        <div class="BRAND">
+            E-Health Manager
+        </div>
+        <div class="image">
+            <img src="{%static 'img/harke.svg' %}">
+            <p class="name"> Dr. {{user.username}} </p>
+            <p class="desc"> Age: 68, S: M </p>
+        </div>
+
+        <div class="nav-elements">
+            <center>
+                <ul class="nav-links">
+                    <li> <a href="/">HOME</a>
+                        <li> <a href=" ">Your Patients</a>
+                            <li> <a href="#appointment">Your todays appointment</a>
+
+                                <li> <a href="/">Log Out</a>
+                </ul>
+            </center>
+        </div>
+    </nav>
+
+
+    <div class="second_section">
+        <div class="second_row">
+
+            <div class="col col-1">
+                <center>
+                    <h2> Your gains in last 5 days</h2>
+                </center>
+                <canvas id="BSChart" style="width:auto;"></canvas>
+
+
+
+            </div>
+
+            <div class="col col-2">
+
+                <H2> No. of patients with different disease </h2>
+                <canvas id="C_Chart" style="width:auto;"></canvas>
+
+
+
+            </div>
+        </div>
+    </div>
+
+
+    <div class="fourth_section"id = "appointment">
+        <div class="fourth_row">
+
+            <div class="col col-1">
+                <br>
+                <center>
+                    <h2> Todays appointment </h2>
+                </center>
+                <br>
+                <div class="table">
+                    <table class="ds-table">
+                        <thead>
+                            <tr>
+                                <th>Time</th>
+                                <th class="vanish">name:age:sex</th>
+                                <th class="vanish vanish_1 ">Category</th>
+                                <th class="vanish vanish_1 ">Problem</th>
+                            </tr>
+                        </thead>
+                        {%for i in patients_list%}
+                        <tbody>
+                            <tr>
+                             
+                                <td>11:00 a.m.</td>
+                                <td class="vanish"><a href={% url 'detail' i.user.id%}>{{i.user.username}}</a></td>
+                                <td class="vanish vanish_1 ">Follow-up</td>
+                                <td class="vanish vanish_1 "><a href="">Cough</a></td>
+                                
+                        
+                        </tr>
+                            </tbody>
+                        {% endfor %}
+
+                    </table>
+
+
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+
+
+
+    <footer>
+        <center>
+            <p>&copy; Team codediggers. All rights reserved. . </p>
+        </center>
+    </footer>
+
+
+
+    <!--[if lt IE 7]>
+                <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+            <![endif]-->
+
+    <script src="{% static 'js/doc_dashboard.js' %}" async defer></script>
+    <script>
+        var xyValues = [200, 150, 150, 110, 140, 110, 120],
+            fin_gains = [200, 150, 180, 210, 140, 310, 120],
+            c = [17, 5, 28, 29, 32, 13, 11];
+        var myChart = new Chart("myChart", {
+            type: "line",
+            data: {
+                labels: ["5/1/2020", "5/2/2020", "5/3/2020", "5/4/2020", "5/5/2020", "5/6/2020", "5/7/2020"],
+                datasets: [{
+                    fill: false,
+                    lineTension: 0,
+                    backgroundColor: "rgba(0,0,255,1.0)",
+                    borderColor: "rgba(0,0,255,0.1)",
+                    data: xyValues,
+                }]
+            },
+            options: {
+                legend: {
+                    display: false
+                },
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            min: 6,
+                            max: 16
+                        }
+                    }],
+                }
+            }
+        });
+
+        var BSChart = new Chart("BSChart", {
+            type: "line",
+            data: {
+                labels: ["5/1/2020", "5/2/2020", "5/3/2020", "5/4/2020", "5/5/2020", "5/6/2020", "5/7/2020"],
+                datasets: [{
+                    fill: false,
+                    lineTension: 0,
+                    backgroundColor: "rgba(0,0,255,1.0)",
+                    borderColor: "rgba(0,0,255,0.1)",
+                    data: fin_gains,
+                }]
+            },
+            options: {
+                legend: {
+                    display: false
+                },
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            min: 6,
+                            max: 16
+                        }
+                    }],
+                }
+            }
+        });
+
+        var C_Chart = new Chart("C_Chart", {
+            type: "bar",
+            data: {
+                labels: ["CommonCold", "Viral Fever", "Influenza", "Diabetes", "High BP", "AIDS", "typhoid"],
+                datasets: [{
+                    fill: false,
+                    lineTension: 0,
+                    backgroundColor: "rgba(0,0,255,1.0)",
+                    borderColor: "rgba(0,0,255,0.1)",
+                    data: c,
+                }]
+            },
+            options: {
+                legend: {
+                    display: false
+                },
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            min: 6,
+                            max: 16
+                        }
+                    }],
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>
+
+</body>
+
+</html>
+
+
+<!--
+{% block content %}
+        <h1>Hello, Doctor<h2>
+                <ul>
+                        {% for i in patients_list %}
+                        <li><a href={% url 'detail' i.user.id%}>{{i.user.username}}</a></li>
+                        {% endfor %}
+                        </ul>
+                <ul>
+{% endblock %}
+-->

@@ -1,0 +1,389 @@
+{%load static%}
+<!doctype html>
+<html>
+
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>E-Health Manager</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="{% static 'css/index.css' %}">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css">
+    <script src="https://kit.fontawesome.com/ac298c0bbf.js" crossorigin="anonymous"></script>
+
+        <!--    <link rel="script" href="https://cdn.jsdelivr.net/npm/chart.js@3.7.1/dist/chart.min.js">-->
+        <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1/dist/chart.min.js"></script>
+        <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    
+    </head>
+    
+    <body>
+    
+        <nav class="nav">
+    
+            <div class="image">
+    
+            </div>
+            <div>
+                <ul class="nav-links">
+                    <li><a href="index.html">HOME</a>
+                        <li><a href="ourworks.html">Blogs</a>
+                            <li><a href="about.html">ABOUT</a>
+                                <li><a href="tel:9800000000">CONTACT</a>
+                </ul>
+                </ul>
+            </div>
+    
+            <div class="hamburger">
+                <div id="itag" class="line"></div>
+                <div id="itag" class="line"></div>
+                <div class="line"></div>
+            </div>
+    
+        </nav>
+    
+        <div class="landing container" id="landing">
+            <div class="button">
+                <a href="{% url 'login' %}"> Log In</a>
+            </div>
+    
+    
+            <div class="text">
+                <div class="show">
+                    <h1>The best, <span></span></h1>
+                    <h1> Electronic Health<span></span></h1>
+                    <h1>Manager<span></span></h1>
+                </div> <br>
+            </div>
+            <div class="button_">
+                <a href="{% url 'signup' %}"> Get started with E-Health Manager </a>
+            </div>
+    
+    
+        </div>
+    
+    
+        <section class="objectives">
+            <div class="objectives_heading">
+                <h1>What's new?</h1>
+                <p style="text-align: justify;
+        text-justify: inter-word;"> Culpa elit nisi nulla ullamco voluptate aliquip. Pariatur esse est amet excepteur adipisicing non anim laborum eu irure cillum nostrud in labore. Eiusmod occaecat occaecat aliqua nostrud esse sunt dolore amet anim exercitation. Aliquip aute
+                    ut eu ipsum voluptate incididunt ea in aute ad ullamco. Fugiat ullamco sint amet dolore deserunt nulla id laboris do ex nisi ex ea est. In non culpa amet occaecat et dolore consectetur incididunt pariatur cupidatat cupidatat elit est deserunt.
+                    <p>
+            </div>
+    
+    
+            <div class="Objectives">
+                <div class="row">
+                    <div class="service">
+                        <i class="fa fa-check-square"></i>
+                        <h2>Right Health facility</h2>
+                        <p>We want you to work on your local community to save environment and make it suitable for local wildlives.</p>
+                    </div>
+    
+                    <div class="service">
+                        <i class="fas fa-archway"></i>
+                        <h2>100% trusted Patients</h2>
+                        <p> We want you to work on your loclity and reduce pollution as it depletes the risk of health hazardes there.</p>
+                    </div>
+    
+                    <div class="service">
+                        <i class="fa-solid fa-user-doctor"></i>
+                        <h2>Direct with Doctors</h2>
+                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                    </div>
+                </div>
+            </div>
+    
+        </section>
+    
+        <section class="About" id="about">
+            <div class="about-items">
+                <div class="text">
+                    <h1> About us </h1>
+                    <p> {% lorem 1 b random %}</p>
+                </div>
+    
+                <div class="button">
+                    <div class="text">
+                        <h1> Get started with E-Health Manager </h1>
+                    </div>
+                    <div class="button-items">
+                        <p> Already a patient? </p>
+                        <a href="{% url 'patient_signup' %}"> Register As a Patient </a>
+                        <p> A doctor?</p>
+                        <a href="{% url 'doctor_signup' %}"> Register as Doctor </a>
+                    </div>
+    
+                </div>
+            </div>
+        </section>
+    
+    
+        <section class="features" id="Ourworks">
+            <div class="Feature_heading">
+                <h1>Common Data visualizations</h1>
+            </div>
+    
+            <div class="feature_row">
+                <div class="col col-1">
+                    <div>
+                        <canvas class="chart" id="myChart"></canvas>
+                    </div>
+    
+                </div>
+    
+                <div class="col col-2">
+    
+                    <h1> Nepal's Covid-19 new cases per day.</h1>
+                    <p style="padding: 15px 30px; text-align: justify;
+        text-justify: inter-word;"> Culpa elit nisi nulla ullamco voluptate aliquip. Pariatur esse est amet excepteur adipisicing non anim laborum eu irure cillum nostrud in labore. Eiusmod occaecat occaecat aliqua nostrud esse sunt dolore amet anim exercitation. Aliquip
+                        est deserunt.
+                    </p>
+                    <p style="padding: 0px 30px; text-align: justify;
+      text-justify: inter-word;">Ea cupidatat proident incididunt ut excepteur Lorem do qui tempor. Deserunt amet reprehenderit dolore Lorem mollit ad veniam mollit cillum ad. Consequat eu velit laboris ex dolore laborum laborum cupidatat aliquip adipisicing exercitation
+                        minim magna magna. Ut est aute ad cupidatat ut cillum amet officia tempor ipsum ad magna. Consectetur occaecat enim pariatur non irure adipisicing culpa amet nisi. Sunt tempor deserunt aute enim amet.</p>
+    
+                </div>
+    
+            </div>
+    
+    
+            <div class="feature_row unique">
+    
+                <div class="col col-2">
+    
+                    <h1> Total Covid-19 cases per day in Nepal</h1>
+                    <p style="padding: 15px 30px; text-align: justify;
+      text-justify: inter-word;">Culpa elit nisi nulla ullamco voluptate aliquip. Pariatur esse est amet excepteur adipisicing non anim laborum eu irure cillum nostrud in labore. Eiusmod occaecat occaecat aliqua nostrud esse sunt dolore amet anim exercitation. Aliquip
+                        aute
+                    </p>
+    
+                    <p style="padding: 0px 30px; text-align: justify;
+      text-justify: inter-word;">Ea cupidatat proident incididunt ut excepteur Lorem do qui tempor. Deserunt amet reprehenderit dolore Lorem mollit ad veniam mollit cillum ad. Consequat eu velit laboris ex dolore laborum laborum cupidatat aliquip adipisicing exercitation
+                        minim magna magna. Ut est aute ad cupidatat ut cillum amet officia tempor ipsum ad magna. Consectetur occaecat enim pariatur non irure adipisicing culpa amet nisi. Sunt tempor deserunt aute enim amet.</p>
+    
+                </div>
+    
+    
+                <div class="col col-1">
+                    <canvas class="chart" id="OurChart"></canvas>
+    
+                </div>
+    
+            </div>
+    
+            <div class="feature_row">
+    
+                <div class="col col-1">
+                    <canvas class="chart" id="deathChart"></canvas>
+    
+                </div>
+    
+                <div class="col col-2">
+    
+                    <h1> Total death cases in Nepal per day</h1>
+                    <p style="padding: 15px 30px; text-align: justify;
+      text-justify: inter-word;"> Culpa elit nisi nulla ullamco voluptate aliquip. Pariatur esse est amet excepteur adipisicing non anim laborum eu irure cillum nostrud in labore. Eiusmod occaecat occaecat aliqua nostrud esse sunt dolore amet anim exercitation. Aliquip
+                        aute
+                    </p>
+                    <p style="padding: 0px 30px; text-align: justify;
+      text-justify: inter-word;">Ea cupidatat proident incididunt ut excepteur Lorem do qui tempor. Deserunt amet reprehenderit dolore Lorem mollit ad veniam mollit cillum ad. Consequat eu velit laboris ex dolore laborum laborum cupidatat aliquip adipisicing exercitation
+                        minim magna magna. Ut est aute ad cupidatat ut cillum amet officia tempor ipsum ad magna. Consectetur occaecat enim pariatur non irure adipisicing culpa amet nisi. Sunt tempor deserunt aute enim amet.</p>
+    
+                </div>
+    
+    
+    
+            </div>
+    
+        </section>
+    
+        <div class="upp">
+            <a href="#landing"><i class = "fa fa-chevron-up"></i></a>
+        </div>
+        <div class="hospitals_near_you">
+            <h1>Hospitals near you</h1>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d139267.27417793058!2d87.21413532502552!3d26.457293314101367!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39ef744704331cc5%3A0x6d9a85e45c54b3fc!2sBiratnagar%2056613!5e0!3m2!1sen!2snp!4v1624872111492!5m2!1sen!2snp"
+                width="1200" height="500" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+    
+        </div>
+        <footer>
+            <div class="upper-layer">
+                <div class="about_us">
+                    <div class="text">
+                        <h1> About us </h1>
+                        <p> Culpa elit nisi nulla ullamco voluptate aliquip. Pariatur esse est amet excepteur adipisicing non anim laborum eu irure cillum nostrud in labore. Eiusmod occaecat occaecat aliqua nostrud esse sunt dolore amet anim exercitation. Aliquip aute</p>
+                    </div>
+    
+                </div>
+                <div class="quick_links">
+    
+                    <div class="text">
+                        <h1> Quick Links </h1>
+                    </div>
+    
+                    <ul class="quick-links-items">
+                        <li><a href=" ">HOME</a>
+                            <li><a href="#Ourworks">Blogs</a>
+                                <li><a href="#about">ABOUT</a>
+                                    <li><a href=" ">CONTACT</a>
+                    </ul>
+    
+                </div>
+                <div class="contact">
+    
+                    <div class="text">
+                        <h1> Contact Us:</h1>
+                        <p><i class="fas fa-phone"></i> <a href="Tel:9800000000 "> 9800000000</a></p>
+                        <p><i class="fas fa-envelope"></i> bugdigger@gov.np </p>
+                        <p><i class="fas fa-map-marker"></i> <a target="_blank" href="https://www.google.com/maps/place/CDO's+Office,+Biratnagar+56613/@26.4634722,87.2844351,17z/data=!3m1!4b1!4m5!3m4!1s0x39ef743e09f350e5:0x57da726f86b5581a!8m2!3d26.4633562!4d87.2869326">Biratnagar - 7, Besides CDO office, Nepal</a>                        </p>
+    
+                    </div>
+                </div>
+            </div>
+            <div class="lower-layer">
+                <p>&copy; Team Bug Digger</p>
+                <p> Designed By Bug Digger </p>
+            </div>
+        </footer>
+    
+        <!--[if lt IE 7]>
+                <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+            <![endif]-->
+    
+        <script src="{% static 'js/app.js' %}">
+        </script>
+        <script>
+            var xyValues = [18, 8, 29, 19, 15, 15, 11],
+                tot_cases = [978828,
+                    978836,
+                    978865,
+                    978884,
+                    978899,
+                    978914,
+                    978925,
+                    978942,
+                ],
+                tot_death = [
+                    0,
+                    0,
+                    1,
+                    1,
+                    1,
+                    2,
+                    0
+    
+                ];
+    
+            var myChart = new Chart("myChart", {
+                type: "line",
+                data: {
+                    labels: ["5/1/2020", "5/2/2020", "5/3/2020", "5/4/2020", "5/5/2020", "5/6/2020", "5/7/2020"],
+                    datasets: [{
+                        fill: false,
+                        lineTension: 0,
+                        backgroundColor: "rgba(0,0,255,1.0)",
+                        borderColor: "rgba(0,0,255,0.1)",
+                        data: xyValues,
+                    }]
+                },
+                options: {
+                    legend: {
+                        display: false
+                    },
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                min: 6,
+                                max: 16
+                            }
+                        }],
+                    }
+                }
+            });
+    
+    
+            var OurChart = new Chart("OurChart", {
+                type: "line",
+                data: {
+                    labels: ["5/1/2020", "5/2/2020", "5/3/2020", "5/4/2020", "5/5/2020", "5/6/2020", "5/7/2020"],
+                    datasets: [{
+                        fill: false,
+                        lineTension: 0,
+                        backgroundColor: "rgba(0,0,255,1.0)",
+                        borderColor: "rgba(0,0,255,0.1)",
+                        data: tot_cases
+                    }]
+                },
+                options: {
+                    legend: {
+                        display: false
+                    },
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                min: 6,
+                                max: 16
+                            }
+                        }],
+                    }
+                }
+            });
+    
+            var deathChart = new Chart("deathChart", {
+                type: "line",
+                data: {
+                    labels: ["6/1/2020", "6/2/2020", "6/3/2020", "6/4/2020", "6/5/2020", "6/6/2020", "6/7/2020"],
+                    datasets: [{
+                        fill: false,
+                        lineTension: 0,
+                        backgroundColor: "rgba(0,0,255,1.0)",
+                        borderColor: "rgba(0,0,255,0.1)",
+                        data: tot_death
+                    }]
+                },
+                options: {
+                    legend: {
+                        display: false
+                    },
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                min: 6,
+                                max: 16
+                            }
+                        }],
+                    }
+                }
+            });
+        </script>
+    </body>
+    
+    </html>
+<!--{% if user.is_doctor %}
+
+<ul>
+{% for i in patients_list %}
+    <li><a href="{% url 'detail' i.user %}">{{i}}</li>
+{% endfor %}
+</ul>
+<ul>
+
+
+
+
+{% elif user.is_patient%}
+    <h2> Hello, patient </h2>
+    
+    {% for item in vitals_list %}
+        {{item.date}}    
+{% endfor %}
+
+
+
+    <a href= {% url 'create_record'%}>Add Record</a>
+{% else %}
+    <h2>Log in or sign up</h2
+{% endif %}-->
